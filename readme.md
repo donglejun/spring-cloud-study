@@ -15,3 +15,4 @@ spring-cloud-study整合了eureka
 #####spring-cloud-study-server-eureka
 
 端口：8081
+[项目地址](https://github.com/donglejun/spring-cloud-study/tree/master/spring-cloud-study-server/spring-cloud-study-server-eureka)
