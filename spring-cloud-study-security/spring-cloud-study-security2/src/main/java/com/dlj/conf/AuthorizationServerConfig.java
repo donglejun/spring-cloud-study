@@ -15,8 +15,8 @@ import org.springframework.security.oauth2.provider.token.store.JwtAccessTokenCo
 @EnableAuthorizationServer
 @Configuration
 public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdapter {
-//    @Autowired
-//    AuthenticationManager authenticationManager;
+    @Autowired
+    AuthenticationManager authenticationManager;
 
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
@@ -49,7 +49,9 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     public void configure(AuthorizationServerEndpointsConfigurer endpoints) throws Exception {
         endpoints
                 .tokenStore(new InMemoryTokenStore())
-                .accessTokenConverter(accessTokenConverter());
+                .accessTokenConverter(accessTokenConverter())
+                .authenticationManager(authenticationManager)
+                .reuseRefreshTokens(false);
     }
 
     /**

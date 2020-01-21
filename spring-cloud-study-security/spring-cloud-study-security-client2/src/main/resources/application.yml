@@ -3,3 +3,12 @@ server:
 spring:
   application:
     name: spring-cloud-study-security-client2
+eureka:
+  client:
+    fetch-registry: true
+    register-with-eureka: true
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka
+logging:
+  level:
+    org.springframework.security: debug
