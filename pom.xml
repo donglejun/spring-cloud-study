@@ -5,7 +5,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>dom.dlj</groupId>
     <artifactId>spring-cloud-study</artifactId>
+    <packaging>pom</packaging>
     <version>1.1.0</version>
+    <modules>
+        <module>spring-cloud-study-server</module>
+    </modules>
     <parent>
         <groupId>org.springframework.boot</groupId>
         <artifactId>spring-boot-starter-parent</artifactId>
@@ -14,8 +18,8 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-cloud-starter-dependencies</artifactId>
+                <groupId>org.springframework.cloud</groupId>
+                <artifactId>spring-cloud-dependencies</artifactId>
                 <version>Greenwich.SR2</version>
                 <scope>import</scope>
                 <type>pom</type>

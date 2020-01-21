@@ -1,0 +1,17 @@
+server:
+  port: 8081
+eureka:
+  instance:
+    hostname: 127.0.0.1
+  client:
+#    不在服务中展示自己
+    register-with-eureka: false
+#    不想服务中注册信息
+    fetch-registry: false
+    service-url:
+#      服务地址
+      defaultZone: http://127.0.0.1:8081/eureka
+spring:
+  application:
+#    用于作为eureka的标识
+    name: spring-cloud-study-server-eureka
