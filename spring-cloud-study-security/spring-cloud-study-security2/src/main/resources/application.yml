@@ -1,0 +1,16 @@
+server:
+  port: 8102
+spring:
+  application:
+    name: spring-cloud-study-security2
+  security:
+    user:
+      name: admin
+      password: admin
+    basic: true
+eureka:
+  client:
+    service-url:
+      defaultZone: http://127.0.0.1:8001/eureka
+    fetch-registry: true
+    register-with-eureka: true

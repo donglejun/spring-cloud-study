@@ -1,5 +1,5 @@
 server:
-  port: 8081
+  port: 8001
 eureka:
   instance:
     hostname: 127.0.0.1
@@ -10,7 +10,7 @@ eureka:
     fetch-registry: false
     service-url:
 #      服务地址
-      defaultZone: http://127.0.0.1:8081/eureka
+      defaultZone: http://${eureka.instance.hostname}:${server.port}/eureka
 spring:
   application:
 #    用于作为eureka的标识

@@ -1,0 +1,10 @@
+server:
+  port: 8101
+spring:
+  application:
+    name: spring-cloud-study-security1
+  security:
+    user:
+      name: admin
+      password: admin
+    basic: true

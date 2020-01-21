@@ -8,11 +8,19 @@ spring-cloud-study整合了eureka
 
 ##项目结构：
 
-###spring-cloud-study
+###_spring-cloud-study_
 
-####spring-cloud-study-server
+####_spring-cloud-study-server_
 
-#####spring-cloud-study-server-eureka
+#####_spring-cloud-study-server-eureka_
 
-端口：8081
+端口：8001
+[访问地址](http://127.0.0.1:8081)
 [项目地址](https://github.com/donglejun/spring-cloud-study/tree/master/spring-cloud-study-server/spring-cloud-study-server-eureka)
+
+###spring-cloud-study-security
+
+####_spring-cloud-study-security1_
+端口:8101
+一个简单的security例子，直接访问hrrp://IP:PORT/即可
+####_spring-cloud-study-security2_
