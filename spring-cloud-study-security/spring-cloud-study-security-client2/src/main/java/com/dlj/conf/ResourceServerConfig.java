@@ -30,15 +30,15 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
         resources
                 .tokenStore(new JwtTokenStore(accessTokenConverter()))
                 .stateless(true);
-                /*配置RemoteTokenService,用于向AuthorizationServer验证令牌*/
+        /*配置RemoteTokenService,用于向AuthorizationServer验证令牌*/
         RemoteTokenServices tokenServices = new RemoteTokenServices();
         tokenServices.setAccessTokenConverter(accessTokenConverter());
         RestTemplate restTemplate = restTemplate();
         /*为restTemplate配置异常处理,忽略404*/
-        restTemplate.setErrorHandler(new DefaultResponseErrorHandler(){
+        restTemplate.setErrorHandler(new DefaultResponseErrorHandler() {
             @Override
             public void handleError(ClientHttpResponse response) throws IOException {
-                if (response.getRawStatusCode() != 404){
+                if (response.getRawStatusCode() != 404) {
                     super.handleError(response);
                 }
             }
@@ -51,15 +51,17 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .tokenServices(tokenServices)
                 .stateless(true);
     }
+
     @Bean
-    public JwtAccessTokenConverter accessTokenConverter(){
+    public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("secret");
         return converter;
     }
+
     @Bean
     @LoadBalanced
-    RestTemplate restTemplate(){
+    RestTemplate restTemplate() {
         return new RestTemplate();
     }
 
@@ -83,17 +85,3 @@ public class ResourceServerConfig extends ResourceServerConfigurerAdapter {
                 .accessDeniedHandler(new OAuth2AccessDeniedHandler());
     }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-

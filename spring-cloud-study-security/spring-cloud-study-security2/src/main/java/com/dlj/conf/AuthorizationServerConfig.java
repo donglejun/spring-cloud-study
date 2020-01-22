@@ -18,6 +18,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Autowired
     AuthenticationManager authenticationManager;
 
+    /**
+     * 自定义服务
+     *
+     * @param clients
+     * @throws Exception
+     */
     @Override
     public void configure(ClientDetailsServiceConfigurer clients) throws Exception {
         /*配置一个客户端
@@ -25,7 +31,7 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
          * */
         clients.inMemory()
                 /*客户端ID*/
-                .withClient("client")
+                .withClient("spring-cloud-study-security-client2")
                 /*客户端可以使用的授权类型
                  * authorization_code:
                  * password
@@ -37,11 +43,12 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
                 /*客户端安全码*/
                 .secret("secret")
                 /*回调地址*/
-                .redirectUris("http://localhost:8888");
+                .redirectUris("http://127.0.0.1:8888");
     }
 
     /**
-     * 配置AuthorizationServer tokenService
+     * 配置AuthorizationServer tokenService(配置服务属性)
+     *
      * @param endpoints
      * @throws Exception
      */
@@ -56,10 +63,11 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
 
     /**
      * 配置jwt转换器
+     *
      * @return
      */
     @Bean
-    public JwtAccessTokenConverter accessTokenConverter(){
+    public JwtAccessTokenConverter accessTokenConverter() {
         JwtAccessTokenConverter converter = new JwtAccessTokenConverter();
         converter.setSigningKey("secret");
         return converter;
@@ -68,10 +76,10 @@ public class AuthorizationServerConfig extends AuthorizationServerConfigurerAdap
     @Override
     public void configure(AuthorizationServerSecurityConfigurer security) throws Exception {
         /*
-        * 允许所有人请求令牌
-        * 已验证的客户端才能请求check_token端点
-        *
-        * */
+         * 允许所有人请求令牌
+         * 已验证的客户端才能请求check_token端点
+         *
+         * */
         security.tokenKeyAccess("perminAll()")
                 .checkTokenAccess("isAuthenticated()")
                 .allowFormAuthenticationForClients();
